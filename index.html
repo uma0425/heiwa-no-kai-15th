@@ -4,357 +4,411 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>出会って15周年 — 伊豆高原 一泊二日</title>
+<title>出会って15周年 — 伊豆高原</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Maru+Gothic:wght@400;500;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Shippori+Mincho+B1:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#FFFBF5;--bg2:#FFF5EB;--fg:#3A2E28;--fg-dim:#7A6E66;--fg-faint:#B5A99F;--rule:rgba(0,0,0,.08);
-  --pop:#FF6B35;--pop-light:#FFF0E8;--teal:#1A9E8F;--teal-light:#E6FAF7;--grape:#7B5EA7;--grape-light:#F3EEFA;
-  --rose:#E8567A;--gold:#E8A817;
-  --night:#1C1820;--night-text:#F0EBE5;--night-dim:#9A92A0;
-  --display:'Playfair Display',Georgia,serif;--jp:'Zen Maru Gothic',sans-serif;--sans:'Outfit',sans-serif;
+--bg:#F8F5F0;
+--fg:#1D1B18;
+--dim:#6E6860;
+--faint:#A8A298;
+--rule:#D8D2CA;
+--accent:#3D6B50;
+--accent-d:#2A4A38;
+--white:#FDFCFA;
+--serif:'Cormorant Garamond',Georgia,serif;
+--jp:'Shippori Mincho B1','Noto Serif JP',serif;
+--sans:'DM Sans','Helvetica Neue',sans-serif;
 }
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--fg);font-family:var(--jp);line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;transition:all .25s}
-#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;background:rgba(255,251,245,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);transition:transform .35s}
-.nav.hide{transform:translateY(-100%)}
-.nav-left{display:flex;align-items:center;gap:.5rem}
-.nav-emoji{font-size:1.2rem}.nav-brand{font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--fg-dim)}
-.nav-tag{font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.08em;background:var(--pop);color:#fff;padding:.2rem .55rem;border-radius:20px}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 1.5rem 4rem;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 600px at 15% 20%,rgba(255,107,53,.12),transparent),radial-gradient(ellipse 500px 500px at 85% 70%,rgba(26,158,143,.10),transparent),radial-gradient(ellipse 400px 400px at 50% 90%,rgba(123,94,167,.08),transparent);pointer-events:none}
-.hero-deco{position:absolute;font-size:clamp(8rem,25vw,16rem);font-family:var(--display);font-weight:700;color:rgba(255,107,53,.06);top:50%;left:50%;transform:translate(-50%,-55%);white-space:nowrap;pointer-events:none;user-select:none}
-.hero-inner{position:relative;z-index:2;max-width:640px}
-.hero-badge{display:inline-block;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--pop);color:#fff;padding:.35rem 1rem;border-radius:30px;margin-bottom:1.5rem}
-.hero h1{font-family:var(--jp);font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700;line-height:1.25;margin-bottom:.5rem}
-.hero h1 em{font-family:var(--display);font-style:italic;font-weight:400;color:var(--pop);font-size:1.1em}
-.hero-sub{font-family:var(--display);font-size:clamp(1rem,2.5vw,1.35rem);font-style:italic;color:var(--fg-dim);margin-bottom:2rem}
-.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
-.chip{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--sans);font-size:.78rem;padding:.4rem .9rem;border-radius:30px;border:1px solid var(--rule);background:rgba(255,255,255,.7)}
-.chip-icon{font-size:.9rem}
-.sec{padding:clamp(3rem,8vw,5rem) 1.5rem}
-.sec-inner{max-width:780px;margin:0 auto}.sec-wide{max-width:960px;margin:0 auto}
-.sec-head{margin-bottom:2rem}
-.sec-num{font-family:var(--display);font-size:3.5rem;font-weight:700;line-height:1;opacity:.12}
-.sec-title{font-family:var(--jp);font-size:clamp(1.3rem,3.5vw,1.7rem);font-weight:700;margin-top:-.5rem}
-.sec-sub{font-family:var(--display);font-size:.88rem;font-style:italic;color:var(--fg-dim)}
-.info-tbl{width:100%;border-collapse:collapse;margin-top:1rem}
-.info-tbl tr{border-bottom:1px solid var(--rule)}
-.info-tbl td{padding:.7rem 0;vertical-align:top;font-size:.92rem}
-.info-tbl .lbl{width:100px;font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-faint);padding-top:.8rem}
-.info-tbl .val{line-height:1.7}
-.info-tbl .val small{color:var(--fg-dim);font-size:.82rem}
-.link-out{color:var(--teal);text-decoration:none;font-weight:500;border-bottom:1px dashed rgba(26,158,143,.3)}
-.link-out:hover{color:var(--pop);border-bottom-color:var(--pop)}
-.callout{padding:1.2rem 1.5rem;border-radius:14px;margin-top:1.5rem;font-size:.88rem;line-height:1.8}
-.callout-pop{background:var(--pop-light);border:1px solid rgba(255,107,53,.15)}
-.callout-teal{background:var(--teal-light);border:1px solid rgba(26,158,143,.15)}
-.callout strong{font-weight:700}
-.callout-title{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
-.callout-pop .callout-title{color:var(--pop)}.callout-teal .callout-title{color:var(--teal)}
-.wx{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--sans);font-size:.78rem;font-weight:500;padding:.25rem .7rem;border-radius:8px;background:#FFF8E1;color:#B8860B;border:1px solid rgba(184,134,11,.15)}
-.tl{margin-top:1.2rem}
-.tl-row{display:flex;gap:1rem;padding:.65rem 0;border-bottom:1px solid var(--rule);align-items:baseline}
-.tl-t{flex:0 0 55px;font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--pop)}
-.tl-c{flex:1;font-size:.9rem;line-height:1.65}
-.tl-c strong{font-weight:700}
-.tl-n{font-size:.78rem;color:var(--fg-dim);margin-top:.1rem}
-@media(min-width:768px){.tl-t{flex:0 0 70px}}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--jp);line-height:1.95;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .3s}
+a:hover{border-bottom-color:var(--accent)}
 
-/* VISUAL BREAK — gradient + SVG illustration instead of external images */
-.vbreak{position:relative;width:100%;padding:2.5rem 1.5rem;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.vbreak-forest{background:linear-gradient(135deg,#2D4A3E 0%,#1A3530 40%,#1E2D28 100%)}
-.vbreak-ocean{background:linear-gradient(135deg,#1A3A5C 0%,#0F2A42 40%,#162535 100%)}
-.vbreak-mountain{background:linear-gradient(135deg,#3A4A6B 0%,#2A3555 40%,#1E2540 100%)}
-.vbreak-content{position:relative;z-index:2;text-align:center;max-width:500px}
-.vbreak-emoji{font-size:2.5rem;margin-bottom:.5rem;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
-.vbreak-text{font-family:var(--display);font-size:.85rem;font-style:italic;color:rgba(255,255,255,.5);line-height:1.5}
-.vbreak svg{position:absolute;bottom:0;left:0;width:100%;height:60px;opacity:.15}
-.vbreak-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;padding:.9rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(248,245,240,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);transition:transform .4s}
+.nav.h{transform:translateY(-100%)}
+.nav-l{font-family:var(--serif);font-size:.9rem;font-style:italic;color:var(--dim)}
+.nav-r{font-family:var(--sans);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
 
-.shop-list{display:grid;gap:1rem;margin-top:1.5rem}
-.shop{background:#fff;border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--rule);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
-.shop:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.06)}
-.shop-top{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem}
-.shop-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.75rem;font-weight:600;color:#fff;flex-shrink:0}
-.shop-num.n1{background:var(--pop)}.shop-num.n2{background:var(--teal)}.shop-num.n3{background:var(--grape)}.shop-num.n4{background:var(--fg-faint)}
-.shop-name{font-weight:700;font-size:.98rem}
-.shop-meta{font-family:var(--sans);font-size:.72rem;color:var(--fg-dim);margin-bottom:.4rem}
-.shop-desc{font-size:.85rem;color:var(--fg-dim);line-height:1.7}
-.shop-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
-.tag{font-family:var(--sans);font-size:.62rem;font-weight:500;padding:.2rem .5rem;border-radius:6px;border:1px solid var(--rule);color:var(--fg-dim)}
-.tag-rec{background:var(--pop-light);border-color:rgba(255,107,53,.2);color:var(--pop)}
-.shop-link{position:absolute;top:1rem;right:1rem;font-size:.9rem;text-decoration:none;opacity:.5;transition:opacity .2s}
-.shop-link:hover{opacity:1}
-@media(min-width:700px){.shop-list{grid-template-columns:1fr 1fr}}
-.fun-grid{display:grid;gap:1rem;margin-top:1.5rem}
-.fun{background:#fff;border-radius:16px;padding:1.3rem 1.4rem;border:1px solid var(--rule);transition:transform .2s}
-.fun:hover{transform:translateY(-2px)}
-.fun-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem}
-.fun-emoji{font-size:1.5rem}
-.fun-label{font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-faint)}
-.fun-title{font-weight:700;font-size:.98rem;margin-bottom:.3rem}
-.fun-body{font-size:.85rem;color:var(--fg-dim);line-height:1.75}
-.party-sec{background:linear-gradient(135deg,#2D1B4E 0%,#1C1830 50%,#1A2535 100%);color:#fff;padding:clamp(3rem,8vw,5rem) 1.5rem;position:relative;overflow:hidden}
-.party-sec::before{content:'🎉';position:absolute;font-size:12rem;opacity:.04;top:-2rem;right:-2rem;transform:rotate(15deg);pointer-events:none}
-.party-sec .sec-num{color:rgba(255,255,255,.1)}.party-sec .sec-title{color:#fff}.party-sec .sec-sub{color:rgba(255,255,255,.4)}
-.ann-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:.8rem;transition:background .2s}
-.ann-card:hover{background:rgba(255,255,255,.1)}
-.ann-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem}
-.ann-num{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--gold);opacity:.7}
-.ann-title{font-weight:700;font-size:.95rem}
-.ann-body{font-size:.84rem;color:rgba(255,255,255,.55);line-height:1.75;padding-left:2.2rem}
-.plan-cards{display:grid;gap:1.5rem;margin-top:1.5rem}
-.plan{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--rule);transition:transform .2s,box-shadow .2s}
-.plan:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.06)}
-.plan-banner{padding:.6rem 1.4rem;font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-.plan-banner.b-pop{background:var(--pop)}.plan-banner.b-teal{background:var(--teal)}.plan-banner.b-grape{background:var(--grape)}
-.plan-body{padding:1.3rem 1.4rem}
-.plan-title{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
-.plan-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;margin-bottom:1rem}
-.plan-stat{padding:.5rem 0;border-top:1px solid var(--rule)}
-.ps-label{font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-faint)}
-.ps-val{font-size:.88rem;font-weight:500;margin-top:.1rem}
-.rain-ok{color:var(--teal);font-weight:600}.rain-ng{color:var(--rose);font-weight:600}.rain-meh{color:#C09040;font-weight:600}
-.plan-desc{font-size:.85rem;color:var(--fg-dim);line-height:1.75}
-.plan-link{display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem;font-family:var(--sans);font-size:.78rem;font-weight:500;color:var(--teal);text-decoration:none;border-bottom:1px dashed rgba(26,158,143,.3);padding-bottom:1px}
-.plan-link:hover{color:var(--pop);border-color:var(--pop)}
-@media(min-width:768px){.plan-stats{grid-template-columns:repeat(4,1fr)}.fun-grid{grid-template-columns:1fr 1fr}.info-tbl .lbl{width:130px}}
-.dark{background:var(--night);color:var(--night-text);padding:clamp(3rem,8vw,5rem) 1.5rem}
-.dark .sec-num{color:rgba(255,255,255,.08)}.dark .sec-title{color:#fff}.dark .sec-sub{color:var(--night-dim)}
-.rain-sec{background:linear-gradient(135deg,#2B3A4A,#1E2A35);color:#E0E8EF;padding:clamp(2.5rem,6vw,4rem) 1.5rem}
-.rain-sec .sec-num{color:rgba(255,255,255,.07)}.rain-sec .sec-title{color:#fff}.rain-sec .sec-sub{color:rgba(255,255,255,.4)}
-.rain-row{display:flex;gap:1rem;padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:baseline}
-.rain-stars{flex:0 0 45px;color:var(--gold);font-size:.8rem}
-.rain-content{flex:1;font-size:.9rem;line-height:1.7}
-.rain-content strong{color:#fff}
-.rain-content small{font-size:.8rem;color:rgba(255,255,255,.4)}
-.day-label{font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;border-radius:8px;margin-top:2.5rem;margin-bottom:.8rem}
-.day-label.dl-move{background:rgba(255,107,53,.12);color:var(--pop)}
-.day-label.dl-night{background:rgba(123,94,167,.12);color:var(--grape)}
-.day-label.dl-morn{background:rgba(26,158,143,.12);color:var(--teal)}
-.day-label.dl-sun{background:rgba(232,168,23,.15);color:#B8860B}
-.day-label.dl-rain{background:rgba(100,140,180,.15);color:#6490B0}
-footer{background:var(--night);color:var(--night-dim);padding:3rem 1.5rem 2rem}
-.footer-inner{max-width:780px;margin:0 auto}
-.footer-head{font-family:var(--display);font-size:1rem;font-style:italic;color:rgba(255,255,255,.3);margin-bottom:1.2rem}
-.src-list{list-style:none}
-.src-list li{padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.78rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
-.src-cat{flex:0 0 90px;font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--night-dim)}
-.src-val a{color:var(--teal);text-decoration:none}
-.src-val a:hover{text-decoration:underline;color:var(--gold)}
-.footer-copy{margin-top:2rem;text-align:center;font-family:var(--sans);font-size:.65rem;color:rgba(255,255,255,.15)}
-.rv{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
-.rv.vis{opacity:1;transform:translateY(0)}
-@keyframes popIn{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
-.hero-inner>*{animation:popIn .7s ease both}
-.hero-badge{animation-delay:.15s}.hero-inner h1{animation-delay:.3s}.hero-sub{animation-delay:.45s}.hero-chips{animation-delay:.6s}
+/* ─── HERO ─── */
+.hero{position:relative;height:100svh;min-height:560px;display:flex;align-items:flex-end;background:var(--accent-d)}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=1400&q=80') center/cover;opacity:.55}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,24,18,.85) 0%,rgba(20,24,18,.2) 55%,transparent)}
+.hero-c{position:relative;z-index:2;padding:0 2rem 3.5rem;max-width:680px}
+.hero-date{font-family:var(--sans);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem}
+.hero-t{font-family:var(--jp);font-size:clamp(2rem,5.5vw,3.4rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:.4rem}
+.hero-sub{font-family:var(--serif);font-size:clamp(1.05rem,2.4vw,1.4rem);font-style:italic;font-weight:400;color:rgba(255,255,255,.55);margin-bottom:1.5rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;font-family:var(--sans);font-size:.75rem;color:rgba(255,255,255,.35)}
+.hero-meta span::before{content:'— ';opacity:.5}
+
+/* ─── FADE-IN ─── */
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero-c>*{animation:up .7s ease both}
+.hero-date{animation-delay:.1s}.hero-t{animation-delay:.25s}.hero-sub{animation-delay:.4s}.hero-meta{animation-delay:.55s}
+
+/* ─── SECTIONS ─── */
+.pg{max-width:740px;margin:0 auto;padding:5rem 2rem}
+.pg-w{max-width:900px;margin:0 auto;padding:5rem 2rem}
+.sh{margin-bottom:2.5rem}
+.sh-n{font-family:var(--serif);font-size:clamp(3rem,7vw,5rem);font-style:italic;font-weight:400;color:var(--faint);opacity:.3;line-height:1}
+.sh-t{font-family:var(--jp);font-size:clamp(1.2rem,3vw,1.55rem);font-weight:700;line-height:1.4;margin-top:.1rem}
+.sh-s{font-family:var(--serif);font-size:.88rem;font-style:italic;color:var(--dim);margin-top:.15rem}
+
+/* ─── ROWS ─── */
+.rows{border-top:1px solid var(--rule)}
+.row{display:flex;gap:.8rem;padding:.8rem 0;border-bottom:1px solid var(--rule)}
+.row-l{flex:0 0 100px;font-family:var(--sans);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:3px}
+.row-v{flex:1;font-size:.92rem;line-height:1.75}
+.row-v small{color:var(--dim);font-size:.84rem}
+@media(min-width:640px){.row-l{flex:0 0 130px}}
+
+/* ─── NOTE ─── */
+.note{margin-top:2rem;padding:1.4rem 1.6rem;border-left:3px solid var(--accent);background:rgba(61,107,80,.04)}
+.note-h{font-family:var(--sans);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;font-weight:500}
+.note p{font-size:.88rem;line-height:1.85;color:var(--dim)}
+
+/* ─── PHOTO BREAK ─── */
+.pb{position:relative;width:100%;height:260px;overflow:hidden}
+.pb-img{width:100%;height:100%;object-fit:cover;display:block}
+.pb-cap{position:absolute;bottom:0;left:0;right:0;padding:.7rem 2rem;font-family:var(--serif);font-size:.78rem;font-style:italic;color:rgba(255,255,255,.5);background:linear-gradient(0deg,rgba(0,0,0,.5),transparent)}
+.pb-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:rgba(255,255,255,.3);font-size:.9rem}
+@media(min-width:768px){.pb{height:380px}}
+
+/* ─── DARK ─── */
+.dk{background:var(--accent-d);color:rgba(255,255,255,.82);padding:5rem 2rem}
+.dk .sh-n{color:rgba(255,255,255,.08)}.dk .sh-t{color:#fff}.dk .sh-s{color:rgba(255,255,255,.3)}
+.dk .row{border-color:rgba(255,255,255,.08)}.dk .rows{border-color:rgba(255,255,255,.08)}
+.dk .row-l{color:rgba(255,255,255,.28)}.dk a{color:rgba(255,255,255,.6);border-bottom-color:rgba(255,255,255,.15)}
+.dk a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.5)}
+
+/* ─── TIMELINE ─── */
+.tl-item{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+.tl-t{flex:0 0 52px;font-family:var(--sans);font-size:.82rem;font-weight:500;color:var(--accent)}
+.tl-c{flex:1;font-size:.9rem;line-height:1.7}
+.tl-c b{font-weight:600}
+.tl-s{font-size:.8rem;color:var(--dim);margin-top:.05rem}
+.dk .tl-item{border-color:rgba(255,255,255,.08)}.dk .tl-t{color:rgba(255,255,255,.45)}.dk .tl-s{color:rgba(255,255,255,.25)}
+@media(min-width:640px){.tl-t{flex:0 0 62px}}
+
+/* ─── PLAN BLOCKS ─── */
+.plan-block{padding:2rem 0;border-bottom:1px solid var(--rule)}
+.plan-block:last-child{border-bottom:none}
+.plan-tag{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem}
+.plan-name{font-family:var(--jp);font-size:1.08rem;font-weight:700;margin-bottom:.8rem}
+.plan-row{display:flex;flex-wrap:wrap;gap:.4rem 0;margin-bottom:.8rem}
+.plan-cell{flex:1;min-width:120px;padding:.4rem 0;border-top:1px solid var(--rule)}
+.plan-cl{font-family:var(--sans);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.plan-cv{font-size:.88rem;margin-top:.05rem}
+.plan-ok{color:var(--accent);font-weight:500}
+.plan-ng{color:#A0523D;font-weight:500}
+.plan-mid{color:#997A2E;font-weight:500}
+.plan-desc{font-size:.88rem;color:var(--dim);line-height:1.8}
+.plan-links{margin-top:.6rem;font-family:var(--sans);font-size:.78rem}
+.plan-links a{margin-right:1.2rem}
+
+/* ─── DAY TAG ─── */
+.day-tag{display:inline-block;font-family:var(--sans);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid var(--rule);margin-top:2.5rem;margin-bottom:.6rem;color:var(--dim)}
+.dk .day-tag{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.35)}
+
+/* ─── QUOTE ─── */
+.qt{background:var(--accent-d);padding:3.5rem 2rem;text-align:center}
+.qt p{font-family:var(--serif);font-size:clamp(1.15rem,2.8vw,1.5rem);font-style:italic;color:rgba(255,255,255,.5);max-width:520px;margin:0 auto;line-height:1.6}
+
+/* ─── DARK ITEM (anniversary) ─── */
+.ann{padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.ann:last-child{border-bottom:none}
+.ann-n{font-family:var(--serif);font-size:1.4rem;font-style:italic;color:rgba(255,255,255,.2);float:left;margin-right:.7rem;line-height:1.1}
+.ann-t{font-weight:600;font-size:.95rem;margin-bottom:.2rem}
+.ann-b{font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.75;clear:left}
+
+/* ─── RAIN ROW ─── */
+.rain-block{background:#2A3540;color:rgba(230,236,240,.85);padding:4rem 2rem}
+.rain-block .sh-n{color:rgba(255,255,255,.06)}.rain-block .sh-t{color:#fff}.rain-block .sh-s{color:rgba(255,255,255,.3)}
+.rr{display:flex;gap:1rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.rr-s{flex:0 0 36px;font-family:var(--serif);font-size:.85rem;font-style:italic;color:rgba(255,255,255,.2)}
+.rr-c{flex:1;font-size:.88rem;line-height:1.75}
+.rr-c b{color:#fff;font-weight:600}
+.rr-c small{font-size:.8rem;color:rgba(255,255,255,.3)}
+
+/* ─── FOOTER ─── */
+footer{background:#1A1D1B;color:rgba(255,255,255,.25);padding:3.5rem 2rem 2rem}
+.ft-inner{max-width:740px;margin:0 auto}
+.ft-h{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.15);margin-bottom:1rem}
+.ft-list{list-style:none}
+.ft-list li{padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.78rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.ft-cat{flex:0 0 80px;font-family:var(--sans);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.18)}
+.ft-val a{color:rgba(255,255,255,.35);border:none}.ft-val a:hover{color:rgba(255,255,255,.7)}
+.ft-copy{margin-top:2.5rem;text-align:center;font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.1)}
+
+/* ─── REVEAL ─── */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.rv.v{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<canvas id="confetti"></canvas>
-<nav class="nav" id="nav"><div class="nav-left"><span class="nav-emoji">🎉</span><span class="nav-brand">15周年パーティ</span></div><span class="nav-tag">2026.3.21–22</span></nav>
 
+<nav class="nav" id="nv">
+  <div class="nav-l">Fifteen Years</div>
+  <div class="nav-r">2026.03.21 – 22</div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
 <section class="hero">
-  <div class="hero-deco">15th</div>
-  <div class="hero-inner">
-    <div class="hero-badge">🎊 Izu-Kōgen · One Night Two Days</div>
-    <h1>出会って<em>15</em>周年<br>記念パーティ</h1>
+  <div class="hero-img"></div>
+  <div class="hero-c">
+    <div class="hero-date">Izu-Kōgen, Shizuoka — One night, two days</div>
+    <h1 class="hero-t">出会って15周年<br>記念の旅</h1>
     <div class="hero-sub">A celebration of fifteen years of friendship</div>
-    <div class="hero-chips">
-      <span class="chip"><span class="chip-icon">📅</span> 3月21日–22日</span>
-      <span class="chip"><span class="chip-icon">🏡</span> villa 緑と物語</span>
-      <span class="chip"><span class="chip-icon">🌿</span> 伊豆高原</span>
-      <span class="chip"><span class="chip-icon">♨️</span> サウナ付き</span>
+    <div class="hero-meta">
+      <span>2026年 3月21日 – 22日</span>
+      <span>villa 緑と物語</span>
+      <span>伊豆高原・伊東市</span>
     </div>
   </div>
 </section>
 
-<!-- 01 OVERVIEW -->
-<section class="sec" style="background:var(--bg2)"><div class="sec-inner rv">
-  <div class="sec-head"><div class="sec-num">01</div><h2 class="sec-title">前提整理</h2><div class="sec-sub">Overview</div></div>
-  <table class="info-tbl">
-    <tr><td class="lbl">宿</td><td class="val"><strong>villa 緑と物語</strong> — サウナ付き一棟貸切<br><small>静岡県伊東市八幡野</small> <a class="link-out" href="https://www.airbnb.jp/rooms/1303951804275533542" target="_blank">Airbnb →</a></td></tr>
-    <tr><td class="lbl">評価</td><td class="val">⭐ 4.98（45件）ゲストチョイス</td></tr>
-    <tr><td class="lbl">収容</td><td class="val">ゲスト10名 · 寝室3 · ベッド10 · 183㎡</td></tr>
-    <tr><td class="lbl">設備</td><td class="val">🧖 サウナ＋ジャグジー · 🎬 4Kプロジェクター · 🔥 BBQグリル · 🍳 BALMUDAキッチン · 🍽️ Miele食洗機</td></tr>
-    <tr><td class="lbl">駐車場</td><td class="val">🚗 乗用車3台</td></tr>
-    <tr><td class="lbl">Check-in</td><td class="val">16:00 — 22:00</td></tr>
-    <tr><td class="lbl">Check-out</td><td class="val">10:00まで</td></tr>
-    <tr><td class="lbl">天気</td><td class="val"><span class="wx">☀️ 3/21 晴れ 傘不要</span>&nbsp;<span class="wx">☁️ 3/22 当日朝確認</span></td></tr>
-  </table>
-  <div class="callout callout-pop"><div class="callout-title">⚡ 宿の注意事項</div><p>🧖 サウナは電源ONから<strong>約1時間</strong>で温まる。水着推奨。飲酒後NG<br>🔥 BBQ <strong>有料¥3,000</strong>（QR決済）道具完備、食材のみ持参<br>🌧 別棟⇔本棟は屋根なし — 雨天時は傘<br>🔇 屋外の大声・大音量NG · 室内禁煙（バルコニーのみ可）</p></div>
-</div></section>
-
-<!-- VISUAL BREAK 1 -->
-<div class="vbreak vbreak-forest">
-  <div class="vbreak-dots"></div>
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 Q360,0 720,30 T1440,30 L1440,60 L0,60 Z" fill="rgba(255,255,255,.06)"/></svg>
-  <div class="vbreak-content">
-    <div class="vbreak-emoji">🌲🏡🌲</div>
-    <div class="vbreak-text">伊豆高原 — 森と海に囲まれた非日常のリゾート</div>
+<!-- ═══════ 01 OVERVIEW ═══════ -->
+<section class="pg rv">
+  <div class="sh"><div class="sh-n">01</div><h2 class="sh-t">前提整理</h2><div class="sh-s">Overview</div></div>
+  <div class="rows">
+    <div class="row"><div class="row-l">宿</div><div class="row-v"><b>villa 緑と物語</b> — サウナ付き新築デザイナーズ一棟貸切<br><small>静岡県伊東市八幡野 ・ <a href="https://www.airbnb.jp/rooms/1303951804275533542" target="_blank">Airbnbで見る</a></small></div></div>
+    <div class="row"><div class="row-l">評価</div><div class="row-v">4.98 / 5.0（45件）ゲストチョイス</div></div>
+    <div class="row"><div class="row-l">収容</div><div class="row-v">ゲスト10名 ・ 寝室3 ・ ベッド10 ・ 183㎡</div></div>
+    <div class="row"><div class="row-l">設備</div><div class="row-v">サウナ＋ジャグジー（別棟）、4Kプロジェクター、BBQ用ガスグリル、<br>BALMUDAフルキッチン、Miele食洗機、Wi-Fi、洗濯乾燥機</div></div>
+    <div class="row"><div class="row-l">駐車場</div><div class="row-v">乗用車3台</div></div>
+    <div class="row"><div class="row-l">Check-in</div><div class="row-v">16:00 – 22:00</div></div>
+    <div class="row"><div class="row-l">Check-out</div><div class="row-v">10:00まで</div></div>
+    <div class="row"><div class="row-l">天気予報</div><div class="row-v">3/21（土）晴れ・傘不要 ／ 3/22（日）当日朝に要確認</div></div>
   </div>
+  <div class="note">
+    <div class="note-h">宿の注意事項</div>
+    <p>サウナは電源ONから温まるまで約1時間。水着着用推奨、飲酒後の利用不可。BBQ利用は有料 ¥3,000（現地QR決済、道具完備・食材のみ持参）。別棟と本棟の間に屋根がないため雨天時は傘が必要。屋外での大声・大音量スピーカーは厳禁、室内は完全禁煙。</p>
+  </div>
+</section>
+
+<!-- ═══════ PHOTO 1 ═══════ -->
+<div class="pb" style="background:#2D4A3E">
+  <img class="pb-img" src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1400&q=80" alt="伊豆高原の森" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <div class="pb-fallback" style="display:none;background:#2D4A3E">伊豆高原 — 森と海に囲まれた非日常のリゾート</div>
+  <div class="pb-cap">伊豆高原 — 森と海に囲まれた非日常のリゾート</div>
 </div>
 
-<!-- 02 DAY 1 -->
-<section class="dark"><div class="sec-wide rv">
-  <div class="sec-head"><div class="sec-num">02</div><h2 class="sec-title">明日のおすすめ行程</h2><div class="sec-sub">Day 1 — Saturday, March 21</div></div>
-  <table class="info-tbl"><tr style="border-color:rgba(255,255,255,.06)"><td class="lbl" style="color:var(--night-dim)">Route</td><td class="val">首都高 → 東名（厚木IC）→ 小田原厚木道路 → R135 → 伊豆高原</td></tr><tr style="border-color:rgba(255,255,255,.06)"><td class="lbl" style="color:var(--night-dim)">距離</td><td class="val">約150–160km · 約2.5〜3時間 · 高速¥4,500–5,000（ETC）</td></tr></table>
-  <div class="tl" style="margin-top:1.5rem">
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">11:00</div><div class="tl-c"><strong>🚗 新宿出発</strong><div class="tl-n" style="color:var(--night-dim)">首都高3号線→東名。海老名SAは土曜混雑、スルー推奨</div></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">12:30</div><div class="tl-c"><strong>🍣 ランチ — <a class="link-out" href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank" style="color:var(--gold)">道の駅 伊東マリンタウン</a></strong><div class="tl-n" style="color:var(--night-dim)">海鮮丼おすすめ 30〜45分。宿まで車30分手前</div></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">13:15</div><div class="tl-c">🌊 R135南下 → 伊豆高原へ</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">16:00</div><div class="tl-c"><strong>🏡 チェックイン</strong><div class="tl-n" style="color:var(--night-dim)"><strong style="color:var(--gold)">⚡即サウナ電源ON！</strong></div></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">16:15</div><div class="tl-c"><strong>🛒 買い出し — <a class="link-out" href="https://www.google.com/maps/place/?q=place_id:ChIJlUMG5MxBIBUR0BSmM_L_f5Q" target="_blank" style="color:var(--gold)">マックスバリュ伊豆高原店</a></strong><div class="tl-n" style="color:var(--night-dim)">車3分 · 7:00〜23:30</div></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">17:00</div><div class="tl-c">🏠 宿に戻って準備開始</div></div>
+<!-- ═══════ 02 DAY 1 ═══════ -->
+<section class="dk">
+  <div class="pg-w" style="padding:0">
+    <div class="sh rv"><div class="sh-n">02</div><h2 class="sh-t">明日の行程</h2><div class="sh-s">Day 1 — Saturday, March 21</div></div>
+    <div class="rows rv" style="border-color:rgba(255,255,255,.08)">
+      <div class="row"><div class="row-l">ルート</div><div class="row-v">首都高 → 東名高速（厚木IC）→ 小田原厚木道路 → 国道135号 → 伊豆高原</div></div>
+      <div class="row"><div class="row-l">距離・時間</div><div class="row-v">約150–160km ・ 所要 約2.5〜3時間（土曜渋滞+30分を見込む）</div></div>
+      <div class="row"><div class="row-l">高速料金</div><div class="row-v">約 ¥4,500 – 5,000（ETC利用）</div></div>
+    </div>
+    <div class="rv" style="margin-top:2rem">
+      <div class="tl-item"><div class="tl-t">11:00</div><div class="tl-c"><b>新宿出発</b><div class="tl-s">海老名SAは土曜混雑するためスルーが無難</div></div></div>
+      <div class="tl-item"><div class="tl-t">12:30</div><div class="tl-c"><b>ランチ — <a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank">道の駅 伊東マリンタウン</a></b><div class="tl-s">海鮮丼がおすすめ。30〜45分。R135沿い、宿まで車30分手前</div></div></div>
+      <div class="tl-item"><div class="tl-t">13:15</div><div class="tl-c">R135を南下 — 伊東〜伊豆高原の海沿いドライブ</div></div>
+      <div class="tl-item"><div class="tl-t">16:00</div><div class="tl-c"><b>チェックイン</b><div class="tl-s">到着したらすぐサウナの電源をONにする（温まるまで約1時間）</div></div></div>
+      <div class="tl-item"><div class="tl-t">16:15</div><div class="tl-c"><b>買い出し — <a href="https://www.google.com/maps/place/?q=place_id:ChIJlUMG5MxBIBUR0BSmM_L_f5Q" target="_blank">マックスバリュ伊豆高原店</a></b><div class="tl-s">車3分。夕食・翌朝食材・酒を調達。7:00〜23:30営業</div></div></div>
+      <div class="tl-item" style="border-bottom:none"><div class="tl-t">17:00</div><div class="tl-c">宿に戻り、夜の準備を始める</div></div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<!-- 03 SUPERMARKETS -->
-<section class="sec"><div class="sec-inner rv">
-  <div class="sec-head"><div class="sec-num">03</div><h2 class="sec-title">買い出し先候補</h2><div class="sec-sub">Supermarkets near the villa</div></div>
-  <div class="shop-list">
-    <div class="shop"><a class="shop-link" href="https://www.google.com/maps/place/?q=place_id:ChIJlUMG5MxBIBUR0BSmM_L_f5Q" target="_blank">📍</a><div class="shop-top"><div class="shop-num n1">①</div><div class="shop-name">マックスバリュ 伊豆高原店</div></div><div class="shop-meta">🚗 車3分 · ⏰ 7:00〜23:30 · 年中無休</div><div class="shop-desc">最寄り＆メイン候補。生鮮・酒・BBQ食材が揃う。遅い時間でもOK。</div><div class="shop-tags"><span class="tag tag-rec">★ おすすめ</span><span class="tag">BBQ食材</span><span class="tag">酒類豊富</span></div></div>
-    <div class="shop"><a class="shop-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ_8BiHZrcGWARvsvlzu_61WM" target="_blank">📍</a><div class="shop-top"><div class="shop-num n2">②</div><div class="shop-name">東急ストア 伊豆高原店</div></div><div class="shop-meta">🚗 車5分 · ⏰ 9:00〜19:00 · 年中無休</div><div class="shop-desc">老舗スーパー。鮮魚が強く刺身の注文切り好評。19時閉店注意。</div><div class="shop-tags"><span class="tag">鮮魚◎</span><span class="tag">惣菜充実</span></div></div>
-    <div class="shop"><a class="shop-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ6UaBqGPDGWARuZWsgPhUlSA" target="_blank">📍</a><div class="shop-top"><div class="shop-num n3">③</div><div class="shop-name">業務スーパー 伊東吉田店</div></div><div class="shop-meta">🚗 車20分 · ⏰ 10:00〜19:30</div><div class="shop-desc">大量買い向き。BBQ肉を安く仕入れたい場合に。</div><div class="shop-tags"><span class="tag">大量買い</span><span class="tag">コスパ◎</span></div></div>
-    <div class="shop"><a class="shop-link" href="https://www.google.com/maps/place/?q=place_id:ChIJCYRFwc_DGWARp6qrob8g9rg" target="_blank">📍</a><div class="shop-top"><div class="shop-num n4">④</div><div class="shop-name">マックスバリュ 伊東広野店</div></div><div class="shop-meta">🚗 車20分 · ⏰ 24時間営業</div><div class="shop-desc">24h営業。深夜の緊急買い足しに。</div><div class="shop-tags"><span class="tag">24H</span><span class="tag">緊急用</span></div></div>
+<!-- ═══════ 03 SUPERMARKETS ═══════ -->
+<section class="pg rv">
+  <div class="sh"><div class="sh-n">03</div><h2 class="sh-t">買い出し先候補</h2><div class="sh-s">Supermarkets</div></div>
+  <div class="rows">
+    <div class="row"><div class="row-l">① 最寄り</div><div class="row-v"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJlUMG5MxBIBUR0BSmM_L_f5Q" target="_blank">マックスバリュ 伊豆高原店</a></b> — 車3分 ・ 7:00〜23:30<br><small>メイン買い出し先。生鮮・酒・BBQ食材が一通り揃う。遅い時間でも開いている</small></div></div>
+    <div class="row"><div class="row-l">② 鮮魚</div><div class="row-v"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJ_8BiHZrcGWARvsvlzu_61WM" target="_blank">東急ストア 伊豆高原店</a></b> — 車5分 ・ 9:00〜19:00<br><small>地元の老舗。刺身の注文切りが好評、惣菜充実。ただし19時閉店に注意</small></div></div>
+    <div class="row"><div class="row-l">③ 大量買い</div><div class="row-v"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJ6UaBqGPDGWARuZWsgPhUlSA" target="_blank">業務スーパー 伊東吉田店</a></b> — 車20分 ・ 10:00〜19:30<br><small>BBQ肉を安く大量に仕入れたい場合に</small></div></div>
+    <div class="row"><div class="row-l">④ 深夜</div><div class="row-v"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJCYRFwc_DGWARp6qrob8g9rg" target="_blank">マックスバリュ 伊東広野店</a></b> — 車20分 ・ 24時間営業<br><small>深夜・早朝の追加買い足しに</small></div></div>
   </div>
-  <div class="callout callout-teal"><div class="callout-title">🛒 買い物リスト（参考）</div><p><strong>夕食:</strong> 鍋セット or BBQ食材 · <strong>つまみ:</strong> チーズ・生ハム・刺身 · <strong>酒:</strong> ビール・ワイン・日本酒<br><strong>翌朝:</strong> パン・卵・ベーコン・サラダ・コーヒー豆（BALMUDAコーヒーメーカーあり）</p></div>
-</div></section>
+  <div class="note">
+    <div class="note-h">買い物リスト（参考）</div>
+    <p>夕食 — 鍋セット or BBQ食材（肉・野菜・海鮮）。おつまみ — チーズ、生ハム、刺身。酒 — ビール、ワイン、日本酒、ハイボール缶。翌朝 — パン、卵、ベーコン、サラダ、コーヒー豆（宿にBALMUDAコーヒーメーカーあり）。</p>
+  </div>
+</section>
 
-<!-- VISUAL BREAK 2 -->
-<div class="vbreak vbreak-ocean">
-  <div class="vbreak-dots"></div>
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C240,10 480,50 720,30 C960,10 1200,50 1440,35 L1440,60 L0,60 Z" fill="rgba(255,255,255,.06)"/></svg>
-  <div class="vbreak-content">
-    <div class="vbreak-emoji">🧖‍♂️✨♨️</div>
-    <div class="vbreak-text">サウナのある森の別荘で過ごす非日常</div>
-  </div>
+<!-- ═══════ PHOTO 2 ═══════ -->
+<div class="pb" style="background:#1A3A5C">
+  <img class="pb-img" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=80" alt="伊豆の海" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="object-position:center 40%">
+  <div class="pb-fallback" style="display:none;background:#1A3A5C">伊豆の海岸線</div>
+  <div class="pb-cap">伊豆の海岸線 — サウナのある森の別荘で過ごす非日常</div>
 </div>
 
-<!-- 04 EVENING -->
-<section class="sec"><div class="sec-inner rv">
-  <div class="sec-head"><div class="sec-num">04</div><h2 class="sec-title">Airbnbでの過ごし方</h2><div class="sec-sub">Evening at the Villa</div></div>
-  <div class="fun-grid">
-    <div class="fun" style="border-top:3px solid var(--pop)"><div class="fun-head"><span class="fun-emoji">🧖</span><span class="fun-label">一番おすすめ</span></div><div class="fun-title">サウナ＆ジャグジーナイト</div><div class="fun-body">到着即ON→交代でサウナ→ジャグジー→外気浴。森の「ととのい」は格別。夕食前に（飲酒後NG）</div></div>
-    <div class="fun" style="border-top:3px solid var(--teal)"><div class="fun-head"><span class="fun-emoji">🎬</span><span class="fun-label">まったり派</span></div><div class="fun-title">プロジェクターシアター</div><div class="fun-body">4Kプロジェクター完備。Prime Video/YouTube対応。高校時代の思い出の映画を流しながら飲む最高の夜</div></div>
-    <div class="fun" style="border-top:3px solid var(--grape)"><div class="fun-head"><span class="fun-emoji">🍲</span><span class="fun-label">わいわい派</span></div><div class="fun-title">鍋パ＋地酒飲み比べ</div><div class="fun-body">BALMUDA炊飯器→金目鯛しゃぶしゃぶ or 海鮮鍋。伊豆の地酒飲み比べ。Miele食洗機で後片付け楽</div></div>
-    <div class="fun" style="border-top:3px solid var(--gold)"><div class="fun-head"><span class="fun-emoji">🔥</span><span class="fun-label">天気が良ければ</span></div><div class="fun-title">BBQナイト（有料¥3,000）</div><div class="fun-body">ガスグリル完備。食材のみ持参。エタノール暖炉（¥4,000）も。3月の夜は上着必須</div></div>
-    <div class="fun" style="border-top:3px solid var(--rose)"><div class="fun-head"><span class="fun-emoji">🎲</span><span class="fun-label">盛り上がり必至</span></div><div class="fun-title">ボドゲ＆カードゲーム大会</div><div class="fun-body">UNO・人狼・カタン・ワードウルフなど持参推奨。飲みながら盛り上がれる◎</div></div>
+<!-- ═══════ 04 EVENING ═══════ -->
+<section class="pg rv">
+  <div class="sh"><div class="sh-n">04</div><h2 class="sh-t">Airbnbでの過ごし方</h2><div class="sh-s">Evening at the Villa</div></div>
+  <p style="font-size:.9rem;color:var(--dim);margin-bottom:1.5rem">「宿を楽しむ」が主目的。サウナ、プロジェクター、フルキッチンをフル活用して、同窓会の夜を過ごす。</p>
+  <div class="rows">
+    <div class="row"><div class="row-l">サウナ</div><div class="row-v"><b>サウナ＆ジャグジーナイト</b> — チェックイン直後に電源ON。買い出し後、交代でサウナ→ジャグジー→森の外気浴。夕食前のサウナが最高（飲酒後はNG）</div></div>
+    <div class="row"><div class="row-l">映画</div><div class="row-v"><b>プロジェクターシアター</b> — 4Kプロジェクター完備（Prime Video / YouTube対応）。高校時代の思い出の映画を流しながら、だらだら飲む夜</div></div>
+    <div class="row"><div class="row-l">料理</div><div class="row-v"><b>鍋パーティー＋地酒飲み比べ</b> — BALMUDA炊飯器で白飯、金目鯛しゃぶしゃぶ or 海鮮鍋。伊豆の地酒を並べて飲み比べ</div></div>
+    <div class="row"><div class="row-l">BBQ</div><div class="row-v"><b>BBQナイト</b>（有料 ¥3,000） — ガスグリル完備、食材のみ持参。エタノール暖炉（¥4,000）と合わせるとアウトドアリビングで極上の夜。3月下旬の夜は冷えるので上着必須</div></div>
+    <div class="row"><div class="row-l">ゲーム</div><div class="row-v"><b>ボードゲーム大会</b> — UNO、人狼、カタン、ワードウルフなど。飲みながら盛り上がれる軽いゲームを持参推奨</div></div>
   </div>
-</div></section>
+</section>
 
-<!-- 15TH ANNIVERSARY -->
-<section class="party-sec"><div class="sec-wide rv">
-  <div class="sec-head"><div class="sec-num">✦</div><h2 class="sec-title">🎉 15周年記念 企画案</h2><div class="sec-sub">Anniversary Specials — エモくて盛り上がる5選</div></div>
-  <div class="ann-card"><div class="ann-head"><div class="ann-num">01</div><div class="ann-title">💌 タイムカプセル「未来への手紙」</div></div><div class="ann-body">全員が15年後の自分に手紙を書く。封をして日付を書き、20周年 or 25周年で開封。紙とペンは事前調達を</div></div>
-  <div class="ann-card"><div class="ann-head"><div class="ann-num">02</div><div class="ann-title">📜 15年の年表づくり</div></div><div class="ann-body">模造紙に卒業〜15年間を年表形式で。各自の転機を書き込み「あのとき何してた？」で盛り上がる</div></div>
-  <div class="ann-card"><div class="ann-head"><div class="ann-num">03</div><div class="ann-title">📸 ベストフォト投票＆ビフォーアフター</div></div><div class="ann-body">高校〜現在のベスト写真をプロジェクターでスライドショー。15年前と同じポーズで撮る「ビフォーアフター」も</div></div>
-  <div class="ann-card"><div class="ann-head"><div class="ann-num">04</div><div class="ann-title">🎤 一人一言「あなたへの感謝」</div></div><div class="ann-body">「出会えてよかったこと」を30秒〜1分で。動画に残すと後から見返してエモい</div></div>
-  <div class="ann-card"><div class="ann-head"><div class="ann-num">05</div><div class="ann-title">🃏 トークテーマカード</div></div><div class="ann-body">「高校の自分に一言アドバイスするなら？」「一番変わった人は？」「30周年にやりたいことは？」</div></div>
-</div></section>
+<!-- ═══════ QUOTE ═══════ -->
+<div class="qt"><p>"15年の時間が、<br>今夜この森で重なる"</p></div>
 
-<!-- VISUAL BREAK 3 -->
-<div class="vbreak vbreak-mountain">
-  <div class="vbreak-dots"></div>
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 L200,20 L400,40 L600,10 L800,35 L1000,15 L1200,30 L1440,5 L1440,60 Z" fill="rgba(255,255,255,.06)"/></svg>
-  <div class="vbreak-content">
-    <div class="vbreak-emoji">🏔️🗻✨</div>
-    <div class="vbreak-text">大室山 — 360度の大パノラマが広がる伊豆高原のシンボル</div>
+<!-- ═══════ 15TH SPECIALS ═══════ -->
+<section class="dk">
+  <div class="pg-w" style="padding:0">
+    <div class="sh rv"><div class="sh-n" style="opacity:.12">—</div><h2 class="sh-t">15周年記念 企画案</h2><div class="sh-s">Anniversary Specials</div></div>
+    <div class="rv">
+      <div class="ann"><div class="ann-n">1</div><div class="ann-t">タイムカプセル「未来の自分たちへの手紙」</div><div class="ann-b">全員が15年後の自分、あるいはお互いに宛てた手紙を書く。封をして日付を書き、次の節目で開封する。紙とペンは事前に調達しておく。</div></div>
+      <div class="ann"><div class="ann-n">2</div><div class="ann-t">15年の年表づくり</div><div class="ann-b">模造紙に高校卒業からの15年間を年表形式で振り返る。各自の転機を書き込んでいくと、「あのとき何してた？」で意外な発見や笑い話が次々出てくる。</div></div>
+      <div class="ann"><div class="ann-n">3</div><div class="ann-t">ベストフォト投票＆記念撮影会</div><div class="ann-b">各自のスマホから高校時代〜現在のベスト写真を1枚ずつ出し合い、プロジェクターでスライドショーにする。15年前の写真と同じポーズで撮るビフォーアフター企画も。</div></div>
+      <div class="ann"><div class="ann-n">4</div><div class="ann-t">一人一言スピーチ「あなたへの感謝」</div><div class="ann-b">少し酔いが回った頃に、「出会えてよかったこと」を30秒〜1分で。動画に残しておくと、後から見返したときに一番刺さる。酔いすぎる前にやるのがポイント。</div></div>
+      <div class="ann"><div class="ann-n">5</div><div class="ann-t">トークテーマカード</div><div class="ann-b">お題カードを回す。「高校時代の自分に一言アドバイスするなら？」「一番変わった人は？」「15年後にやりたいことは？」自然と深い話が出てくる。</div></div>
+    </div>
   </div>
+</section>
+
+<!-- ═══════ PHOTO 3 ═══════ -->
+<div class="pb" style="background:#3A4A6B">
+  <img class="pb-img" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1400&q=80" alt="大室山" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="object-position:center 30%">
+  <div class="pb-fallback" style="display:none;background:#3A4A6B">大室山 — 360度の大パノラマ</div>
+  <div class="pb-cap">大室山 — 360度の大パノラマが広がる伊豆高原のシンボル</div>
 </div>
 
-<!-- 05 DAY 2 PLANS -->
-<section class="sec" style="background:var(--bg2)"><div class="sec-inner rv">
-  <div class="sec-head"><div class="sec-num">05</div><h2 class="sec-title">明後日の候補プラン 3案</h2><div class="sec-sub">Day 2 — After Check-out</div></div>
-  <p style="font-size:.88rem;color:var(--fg-dim);margin-bottom:1rem">チェックアウト10:00→2〜4時間楽しんで14:00頃帰路へ</p>
-  <div class="plan-cards">
-    <div class="plan"><div class="plan-banner b-pop">🏔 絶景系</div><div class="plan-body"><div class="plan-title">プランA — 大室山リフト＋お鉢巡り</div><div class="plan-stats"><div class="plan-stat"><div class="ps-label">所要時間</div><div class="ps-val">約1〜1.5h</div></div><div class="plan-stat"><div class="ps-label">移動</div><div class="ps-val">車12分</div></div><div class="plan-stat"><div class="ps-label">料金</div><div class="ps-val">¥700〜</div></div><div class="plan-stat"><div class="ps-label">雨天</div><div class="ps-val"><span class="rain-ng">✕ 運休</span></div></div></div><div class="plan-desc">標高580mからの360度パノラマ。富士山・伊豆七島を一望。リフト6分＋お鉢巡り約1km。15周年の集合写真にぴったり。</div><a class="plan-link" href="https://www.google.com/maps/place/?q=place_id:ChIJH5uylDPDGWAR6Oep6Ma5bu4" target="_blank">📍 Maps</a>&emsp;<a class="plan-link" href="https://omuroyama.com/" target="_blank">🌐 公式</a></div></div>
-    <div class="plan"><div class="plan-banner b-teal">🌿 のんびり系</div><div class="plan-body"><div class="plan-title">プランB — 一碧湖（いっぺきこ）散策</div><div class="plan-stats"><div class="plan-stat"><div class="ps-label">所要時間</div><div class="ps-val">約1〜1.5h</div></div><div class="plan-stat"><div class="ps-label">移動</div><div class="ps-val">車15分</div></div><div class="plan-stat"><div class="ps-label">料金</div><div class="ps-val">無料</div></div><div class="plan-stat"><div class="ps-label">雨天</div><div class="ps-val"><span class="rain-meh">△ 小雨可</span></div></div></div><div class="plan-desc">「伊豆の瞳」火口湖。周囲4km、1周約1時間。足湯・売店あり。のんびり歩きながら昨夜の話の続きを。</div><a class="plan-link" href="https://www.google.com/maps/place/?q=place_id:ChIJCxOUSWnDGWARHO87qHTYzJs" target="_blank">📍 Maps</a></div></div>
-    <div class="plan"><div class="plan-banner b-grape">♨️ 食・温泉系</div><div class="plan-body"><div class="plan-title">プランC — 赤沢日帰り温泉館＋海鮮ランチ</div><div class="plan-stats"><div class="plan-stat"><div class="ps-label">所要時間</div><div class="ps-val">約2〜3h</div></div><div class="plan-stat"><div class="ps-label">移動</div><div class="ps-val">車10〜15分</div></div><div class="plan-stat"><div class="ps-label">料金</div><div class="ps-val">¥1,600前後</div></div><div class="plan-stat"><div class="ps-label">雨天</div><div class="ps-val"><span class="rain-ok">◎ 完全OK</span></div></div></div><div class="plan-desc">幅25mインフィニティ露天風呂から太平洋一望。全国ランキング上位。リニューアル済み。タオル無料・手ぶらOK。</div><a class="plan-link" href="https://www.google.com/maps/place/?q=place_id:ChIJARfVZ1fcGWAR7Bllx0mqIrs" target="_blank">📍 Maps</a>&emsp;<a class="plan-link" href="https://www.izuakazawa.jp/" target="_blank">🌐 公式</a></div></div>
-  </div>
-</div></section>
+<!-- ═══════ 05 DAY 2 ═══════ -->
+<section class="pg rv">
+  <div class="sh"><div class="sh-n">05</div><h2 class="sh-t">明後日の候補プラン</h2><div class="sh-s">Day 2 — After Check-out</div></div>
+  <p style="font-size:.88rem;color:var(--dim);margin-bottom:.5rem">チェックアウト 10:00 → 2〜4時間楽しんで、14:00頃に帰路へ。</p>
 
-<!-- 06 RAIN -->
-<section class="rain-sec"><div class="sec-wide rv">
-  <div class="sec-head"><div class="sec-num">06</div><h2 class="sec-title">☂️ 雨天代替案</h2><div class="sec-sub">Rainy Day Alternatives</div></div>
-  <div class="rain-row"><div class="rain-stars">★★★</div><div class="rain-content"><strong><a class="link-out" href="https://www.google.com/maps/place/?q=place_id:ChIJARfVZ1fcGWAR7Bllx0mqIrs" target="_blank" style="color:var(--gold)">赤沢日帰り温泉館</a></strong> — 雨天最有力。完全室内。温泉＋ランチで完結</div></div>
-  <div class="rain-row"><div class="rain-stars">★★</div><div class="rain-content"><strong><a class="link-out" href="https://www.google.com/maps/place/?q=place_id:ChIJVd5_PE7DGWARMS_dHSTPe-4" target="_blank" style="color:var(--gold)">伊豆クラフトハウス</a></strong> — 吹きガラス¥3,355〜 記念品を手作り！日曜9:30〜 <small>TEL:0557-51-5355 · <a href="http://www.izu-crafthouse.org/" target="_blank" style="color:rgba(255,255,255,.5)">公式→</a></small></div></div>
-  <div class="rain-row"><div class="rain-stars">★</div><div class="rain-content"><strong><a class="link-out" href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank" style="color:var(--gold)">道の駅 伊東マリンタウン</a></strong> — ショッピング＋海鮮＋足湯。帰路途中</div></div>
-</div></section>
+  <div class="plan-block">
+    <div class="plan-tag">絶景系</div>
+    <div class="plan-name">プランA — 大室山リフト＋お鉢巡り</div>
+    <div class="plan-row">
+      <div class="plan-cell"><div class="plan-cl">所要時間</div><div class="plan-cv">約1〜1.5h</div></div>
+      <div class="plan-cell"><div class="plan-cl">宿から</div><div class="plan-cv">車12分</div></div>
+      <div class="plan-cell"><div class="plan-cl">料金</div><div class="plan-cv">¥700〜（往復）</div></div>
+      <div class="plan-cell"><div class="plan-cl">雨天</div><div class="plan-cv"><span class="plan-ng">不可（運休）</span></div></div>
+    </div>
+    <div class="plan-desc">標高580mの山頂からの360度パノラマ。富士山、伊豆七島、相模灘を一望できる。リフトで6分の空中散歩、お鉢巡りは噴火口跡を1周する約1kmの遊歩道。短時間で完結し、集合写真にふさわしい「画になる」スポット。</div>
+    <div class="plan-links"><a href="https://www.google.com/maps/place/?q=place_id:ChIJH5uylDPDGWAR6Oep6Ma5bu4" target="_blank">Google Maps</a> <a href="https://omuroyama.com/" target="_blank">公式サイト</a></div>
+  </div>
 
-<!-- 07 FINAL -->
-<section class="dark"><div class="sec-wide rv">
-  <div class="sec-head"><div class="sec-num">07</div><h2 class="sec-title">🗓 おすすめ最終行程</h2><div class="sec-sub">Recommended Itinerary</div></div>
-  <div class="day-label dl-move">🚗 Day 1 · 3/21（土）移動日</div>
-  <div class="tl">
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">11:00</div><div class="tl-c"><strong>新宿出発</strong></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">12:30</div><div class="tl-c"><strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(232,168,23,.4)">🍣 伊東マリンタウン</a></strong> ランチ</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">13:15</div><div class="tl-c">🌊 R135南下</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">16:00</div><div class="tl-c"><strong>🏡 チェックイン → ⚡即サウナON</strong></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">16:15</div><div class="tl-c"><strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJlUMG5MxBIBUR0BSmM_L_f5Q" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(232,168,23,.4)">🛒 マックスバリュ</a></strong> 買い出し</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">17:00</div><div class="tl-c">🏠 宿に戻る</div></div>
+  <div class="plan-block">
+    <div class="plan-tag">のんびり系</div>
+    <div class="plan-name">プランB — 一碧湖（いっぺきこ）散策</div>
+    <div class="plan-row">
+      <div class="plan-cell"><div class="plan-cl">所要時間</div><div class="plan-cv">約1〜1.5h</div></div>
+      <div class="plan-cell"><div class="plan-cl">宿から</div><div class="plan-cv">車15分</div></div>
+      <div class="plan-cell"><div class="plan-cl">料金</div><div class="plan-cv">無料</div></div>
+      <div class="plan-cell"><div class="plan-cl">雨天</div><div class="plan-cv"><span class="plan-mid">小雨なら可</span></div></div>
+    </div>
+    <div class="plan-desc">「伊豆の瞳」と呼ばれる美しい火口湖。透明度が高く、春の桜や新緑が湖面に映る。周囲約4km、遊歩道を1周約1時間。湖畔に足湯や売店もある。のんびり歩きながら昨夜の話の続きができる、飲みすぎた朝にもやさしいペース。</div>
+    <div class="plan-links"><a href="https://www.google.com/maps/place/?q=place_id:ChIJCxOUSWnDGWARHO87qHTYzJs" target="_blank">Google Maps</a></div>
   </div>
-  <div class="day-label dl-night">🌙 宿での夜</div>
-  <div class="tl">
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">17:00</div><div class="tl-c">🧖 サウナタイム</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">18:00</div><div class="tl-c"><strong>🥂 全員揃って乾杯！</strong></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">18:30</div><div class="tl-c">🍲 <strong>夕食</strong></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">20:00</div><div class="tl-c">🎉 <strong>15周年企画タイム</strong></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">21:00</div><div class="tl-c">🧖 サウナ第2陣</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">22:00</div><div class="tl-c">🎬 映画 or ゆったり飲み</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">24:00</div><div class="tl-c">💤 就寝</div></div>
-  </div>
-  <div class="day-label dl-morn">☀️ Day 2 · 翌朝</div>
-  <div class="tl">
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">7:30</div><div class="tl-c">起床 ☕</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">8:00</div><div class="tl-c">🧖 朝サウナ（希望者）</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">8:30</div><div class="tl-c">🍳 <strong>朝食</strong></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">9:45</div><div class="tl-c">📸 <strong>集合写真</strong></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">10:00</div><div class="tl-c"><strong>チェックアウト</strong></div></div>
-  </div>
-  <div class="day-label dl-sun">☀️ チェックアウト後（晴天）</div>
-  <div class="tl">
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">10:15</div><div class="tl-c">🏔 <strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJH5uylDPDGWAR6Oep6Ma5bu4" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(232,168,23,.4)">大室山リフト＋お鉢巡り</a></strong><div class="tl-n" style="color:var(--night-dim)">車12分 ¥700 ラスト集合写真！</div></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">12:00</div><div class="tl-c">🍣 <a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(232,168,23,.4)">伊東マリンタウン</a> 昼食＋お土産</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">13:00</div><div class="tl-c">帰路→新宿</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">15:30</div><div class="tl-c"><strong>🏙 新宿到着</strong></div></div>
-  </div>
-  <div class="day-label dl-rain">☂️ チェックアウト後（雨天）</div>
-  <div class="tl">
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">10:00</div><div class="tl-c">♨️ <strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJARfVZ1fcGWAR7Bllx0mqIrs" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(232,168,23,.4)">赤沢日帰り温泉館</a></strong><div class="tl-n" style="color:var(--night-dim)">温泉＋海鮮ランチ</div></div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">13:00</div><div class="tl-c">🛍 <a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(232,168,23,.4)">マリンタウン</a> お土産</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">13:30</div><div class="tl-c">帰路→新宿</div></div>
-    <div class="tl-row" style="border-color:rgba(255,255,255,.06)"><div class="tl-t" style="color:var(--gold)">16:00</div><div class="tl-c"><strong>🏙 新宿到着</strong></div></div>
-  </div>
-</div></section>
 
-<footer><div class="footer-inner">
-  <div class="footer-head">Sources & References</div>
-  <ul class="src-list">
-    <li><span class="src-cat">宿</span><span class="src-val"><a href="https://www.airbnb.jp/rooms/1303951804275533542" target="_blank">Airbnb — villa 緑と物語</a></span></li>
-    <li><span class="src-cat">ルート</span><span class="src-val"><a href="https://www.navitime.co.jp/" target="_blank">NAVITIME</a></span></li>
-    <li><span class="src-cat">スーパー</span><span class="src-val"><a href="https://www.mv-tokai.co.jp/store/14134/" target="_blank">マックスバリュ東海</a> · <a href="https://www.tokyu-store.co.jp/shop/detail.html?pdid=157" target="_blank">東急ストア</a></span></li>
-    <li><span class="src-cat">大室山</span><span class="src-val"><a href="https://omuroyama.com/" target="_blank">大室山リフト公式</a></span></li>
-    <li><span class="src-cat">温泉</span><span class="src-val"><a href="https://www.izuakazawa.jp/" target="_blank">赤沢温泉郷公式</a></span></li>
-    <li><span class="src-cat">体験</span><span class="src-val"><a href="http://www.izu-crafthouse.org/" target="_blank">伊豆クラフトハウス</a></span></li>
-    <li><span class="src-cat">観光</span><span class="src-val"><a href="https://itospa.com/" target="_blank">伊東市観光サイト</a></span></li>
-    <li><span class="src-cat">天気</span><span class="src-val"><a href="https://weather.yahoo.co.jp/weather/jp/22/5020.html" target="_blank">Yahoo!天気</a></span></li>
-  </ul>
-  <p class="footer-copy">🎊 15th Anniversary Trip — Izu-Kōgen 2026 🎊</p>
-</div></footer>
+  <div class="plan-block">
+    <div class="plan-tag">食・温泉系</div>
+    <div class="plan-name">プランC — 赤沢日帰り温泉館＋海鮮ランチ</div>
+    <div class="plan-row">
+      <div class="plan-cell"><div class="plan-cl">所要時間</div><div class="plan-cv">約2〜3h</div></div>
+      <div class="plan-cell"><div class="plan-cl">宿から</div><div class="plan-cv">車10〜15分</div></div>
+      <div class="plan-cell"><div class="plan-cl">料金</div><div class="plan-cv">¥1,600前後</div></div>
+      <div class="plan-cell"><div class="plan-cl">雨天</div><div class="plan-cv"><span class="plan-ok">完全対応</span></div></div>
+    </div>
+    <div class="plan-desc">幅25mのインフィニティ露天風呂から太平洋を一望する、全国ランキング上位常連の日帰り温泉。2025年12月にリニューアルオープン済み。レストラン「湯羅」では金目鯛など伊豆の海鮮が楽しめる。タオル無料貸出、手ぶらでOK。</div>
+    <div class="plan-links"><a href="https://www.google.com/maps/place/?q=place_id:ChIJARfVZ1fcGWAR7Bllx0mqIrs" target="_blank">Google Maps</a> <a href="https://www.izuakazawa.jp/" target="_blank">公式サイト</a></div>
+  </div>
+</section>
+
+<!-- ═══════ 06 RAIN ═══════ -->
+<section class="rain-block">
+  <div class="pg-w" style="padding:0">
+    <div class="sh rv"><div class="sh-n">06</div><h2 class="sh-t">雨天代替案</h2><div class="sh-s">Rainy Day Alternatives</div></div>
+    <div class="rv">
+      <div class="rr"><div class="rr-s">1st</div><div class="rr-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJARfVZ1fcGWAR7Bllx0mqIrs" target="_blank" style="color:rgba(255,255,255,.7)">赤沢日帰り温泉館</a></b>（プランC）— 雨天の最有力候補。完全室内で温泉＋ランチが完結する</div></div>
+      <div class="rr"><div class="rr-s">2nd</div><div class="rr-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJVd5_PE7DGWARMS_dHSTPe-4" target="_blank" style="color:rgba(255,255,255,.7)">伊豆クラフトハウス</a></b> — 吹きガラス体験 ¥3,355〜。15周年の記念品を手作りできる。日曜 9:30〜17:00<br><small>要予約 TEL 0557-51-5355 ・ <a href="http://www.izu-crafthouse.org/" target="_blank" style="color:rgba(255,255,255,.35)">公式サイト</a></small></div></div>
+      <div class="rr" style="border-bottom:none"><div class="rr-s">3rd</div><div class="rr-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank" style="color:rgba(255,255,255,.7)">道の駅 伊東マリンタウン</a></b> — ショッピング＋海鮮ランチ＋足湯。帰路の途中にあり立ち寄りやすい</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 07 FINAL ITINERARY ═══════ -->
+<section class="dk">
+  <div class="pg-w" style="padding:0">
+    <div class="sh rv"><div class="sh-n">07</div><h2 class="sh-t">おすすめの最終行程</h2><div class="sh-s">Recommended Itinerary</div></div>
+
+    <div class="day-tag rv">Day 1 ・ 3/21（土） 移動日</div>
+    <div class="rv">
+      <div class="tl-item"><div class="tl-t">11:00</div><div class="tl-c"><b>新宿出発</b></div></div>
+      <div class="tl-item"><div class="tl-t">12:30</div><div class="tl-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank">伊東マリンタウン</a></b>でランチ<div class="tl-s">海鮮丼、30〜45分</div></div></div>
+      <div class="tl-item"><div class="tl-t">13:15</div><div class="tl-c">R135南下</div></div>
+      <div class="tl-item"><div class="tl-t">16:00</div><div class="tl-c"><b>チェックイン</b> → すぐサウナ電源ON</div></div>
+      <div class="tl-item"><div class="tl-t">16:15</div><div class="tl-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJlUMG5MxBIBUR0BSmM_L_f5Q" target="_blank">マックスバリュ</a></b>で買い出し</div></div>
+      <div class="tl-item" style="border:none"><div class="tl-t">17:00</div><div class="tl-c">宿に戻る</div></div>
+    </div>
+
+    <div class="day-tag rv">宿での夜</div>
+    <div class="rv">
+      <div class="tl-item"><div class="tl-t">17:00</div><div class="tl-c">サウナタイム（第1陣）</div></div>
+      <div class="tl-item"><div class="tl-t">18:00</div><div class="tl-c"><b>全員揃って乾杯</b></div></div>
+      <div class="tl-item"><div class="tl-t">18:30</div><div class="tl-c"><b>夕食</b>（鍋パーティー or BBQ）</div></div>
+      <div class="tl-item"><div class="tl-t">20:00</div><div class="tl-c"><b>15周年企画タイム</b><div class="tl-s">年表づくり、スピーチ、トークテーマカード</div></div></div>
+      <div class="tl-item"><div class="tl-t">21:00</div><div class="tl-c">サウナ第2陣 / ジャグジー</div></div>
+      <div class="tl-item"><div class="tl-t">22:00</div><div class="tl-c">プロジェクターで映画、ゆったり飲み</div></div>
+      <div class="tl-item" style="border:none"><div class="tl-t">24:00</div><div class="tl-c">就寝</div></div>
+    </div>
+
+    <div class="day-tag rv">Day 2 ・ 3/22（日） 翌朝〜チェックアウト</div>
+    <div class="rv">
+      <div class="tl-item"><div class="tl-t">7:30</div><div class="tl-c">起床</div></div>
+      <div class="tl-item"><div class="tl-t">8:00</div><div class="tl-c">朝サウナ（希望者）<div class="tl-s">朝の森で外気浴。静かで最高の時間</div></div></div>
+      <div class="tl-item"><div class="tl-t">8:30</div><div class="tl-c"><b>朝食</b><div class="tl-s">BALMUDAコーヒー＋トースト＋卵料理</div></div></div>
+      <div class="tl-item"><div class="tl-t">9:45</div><div class="tl-c"><b>集合写真撮影</b></div></div>
+      <div class="tl-item" style="border:none"><div class="tl-t">10:00</div><div class="tl-c"><b>チェックアウト</b></div></div>
+    </div>
+
+    <div class="day-tag rv">晴天 ・ チェックアウト後</div>
+    <div class="rv">
+      <div class="tl-item"><div class="tl-t">10:15</div><div class="tl-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJH5uylDPDGWAR6Oep6Ma5bu4" target="_blank">大室山リフト＋お鉢巡り</a></b><div class="tl-s">車12分。往復 ¥700。ラストの集合写真を</div></div></div>
+      <div class="tl-item"><div class="tl-t">11:30</div><div class="tl-c">大室山出発 → 帰路へ</div></div>
+      <div class="tl-item"><div class="tl-t">12:00</div><div class="tl-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank">伊東マリンタウン</a></b>で昼食＋お土産</div></div>
+      <div class="tl-item"><div class="tl-t">13:00</div><div class="tl-c">伊東出発 → 新宿へ</div></div>
+      <div class="tl-item" style="border:none"><div class="tl-t">15:30</div><div class="tl-c"><b>新宿到着（見込み）</b></div></div>
+    </div>
+
+    <div class="day-tag rv">雨天 ・ チェックアウト後</div>
+    <div class="rv">
+      <div class="tl-item"><div class="tl-t">10:00</div><div class="tl-c"><b><a href="https://www.google.com/maps/place/?q=place_id:ChIJARfVZ1fcGWAR7Bllx0mqIrs" target="_blank">赤沢日帰り温泉館</a></b>で温泉＋ランチ<div class="tl-s">車10〜15分。25mインフィニティ露天風呂</div></div></div>
+      <div class="tl-item"><div class="tl-t">12:30</div><div class="tl-c">出発 → 帰路へ</div></div>
+      <div class="tl-item"><div class="tl-t">13:00</div><div class="tl-c"><a href="https://www.google.com/maps/place/?q=place_id:ChIJkzxTVG7BGWARxBBjqi5fjvo" target="_blank">伊東マリンタウン</a>でお土産</div></div>
+      <div class="tl-item" style="border:none"><div class="tl-t">16:00</div><div class="tl-c"><b>新宿到着（見込み）</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-h">Sources</div>
+    <ul class="ft-list">
+      <li><span class="ft-cat">宿</span><span class="ft-val"><a href="https://www.airbnb.jp/rooms/1303951804275533542" target="_blank">Airbnb — villa 緑と物語</a></span></li>
+      <li><span class="ft-cat">ルート</span><span class="ft-val"><a href="https://www.navitime.co.jp/" target="_blank">NAVITIME</a></span></li>
+      <li><span class="ft-cat">スーパー</span><span class="ft-val"><a href="https://www.mv-tokai.co.jp/store/14134/" target="_blank">マックスバリュ東海</a> ・ <a href="https://www.tokyu-store.co.jp/shop/detail.html?pdid=157" target="_blank">東急ストア</a></span></li>
+      <li><span class="ft-cat">大室山</span><span class="ft-val"><a href="https://omuroyama.com/" target="_blank">大室山登山リフト公式</a></span></li>
+      <li><span class="ft-cat">温泉</span><span class="ft-val"><a href="https://www.izuakazawa.jp/" target="_blank">赤沢温泉郷公式</a></span></li>
+      <li><span class="ft-cat">体験</span><span class="ft-val"><a href="http://www.izu-crafthouse.org/" target="_blank">伊豆クラフトハウス</a></span></li>
+      <li><span class="ft-cat">観光</span><span class="ft-val"><a href="https://itospa.com/" target="_blank">伊東市観光サイト</a></span></li>
+      <li><span class="ft-cat">天気</span><span class="ft-val"><a href="https://weather.yahoo.co.jp/weather/jp/22/5020.html" target="_blank">Yahoo!天気 伊豆</a></span></li>
+    </ul>
+    <p class="ft-copy">15th Anniversary Trip — Izu-Kōgen, 2026</p>
+  </div>
+</footer>
 
 <script>
-let ls=0;const nv=document.getElementById('nav');
-window.addEventListener('scroll',()=>{const c=window.pageYOffset;c>ls&&c>80?nv.classList.add('hide'):nv.classList.remove('hide');ls=c},{passive:true});
-const ob=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ob.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
-(function(){const cv=document.getElementById('confetti'),ctx=cv.getContext('2d');let W,H;function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}resize();window.addEventListener('resize',resize);const colors=['#FF6B35','#1A9E8F','#7B5EA7','#E8A817','#E8567A','#FFD700'];const ps=[];for(let i=0;i<120;i++){ps.push({x:W*.5+((Math.random()-.5)*W*.4),y:H*.3+((Math.random()-.5)*H*.2),vx:(Math.random()-.5)*8,vy:Math.random()*-8-2,w:Math.random()*8+4,h:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],rot:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.15,g:Math.random()*.12+.06,life:1,decay:Math.random()*.003+.004})}function draw(){ctx.clearRect(0,0,W,H);let alive=false;ps.forEach(p=>{if(p.life<=0)return;alive=true;p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.99;p.rot+=p.rv;p.life-=p.decay;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});if(alive)requestAnimationFrame(draw);else cv.style.display='none'}setTimeout(draw,400)})();
+let y=0;const n=document.getElementById('nv');
+window.addEventListener('scroll',()=>{const c=scrollY;c>y&&c>60?n.classList.add('h'):n.classList.remove('h');y=c},{passive:true});
+new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');e.target.style.transitionDelay=e.target.dataset.d||'0s'}})},{threshold:.08}).observe||0;
+document.querySelectorAll('.rv').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting){el.classList.add('v')}},{threshold:.08}).observe(el));
 </script>
 </body>
 </html>
